@@ -117,6 +117,7 @@
                             org.apache.sling.models.it.models,
                             org.apache.sling.models.it.rtbound,
                             org.apache.sling.models.it.rtboundpicker,
+                            org.apache.sling.models.it.rtpickerrequest,
                             org.apache.sling.models.it.delegate.request,
                             org.apache.sling.models.it.delegate.resource
                         </Sling-Model-Packages>
@@ -275,7 +276,8 @@
                         <sling.additional.bundle.14>jackson-core</sling.additional.bundle.14>
                         <sling.additional.bundle.15>jackson-databind</sling.additional.bundle.15>
                         <sling.additional.bundle.16>commons-lang3</sling.additional.bundle.16>
-                        <sling.additional.bundle.17>${project.build.finalName}.jar</sling.additional.bundle.17>
+                        <sling.additional.bundle.17>httpclient-osgi</sling.additional.bundle.17>
+                        <sling.additional.bundle.18>${project.build.finalName}.jar</sling.additional.bundle.18>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -366,6 +368,13 @@
             <version>3.4</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient-osgi</artifactId>
+            <version>4.5.5</version>
+            <scope>provided</scope>
+        </dependency>
+
 
         <!-- not part of launchpad 7 (see SLING-4710) -->
         <dependency>
@@ -436,7 +445,7 @@
         <profile>
             <id>debug-remote-process-suspend</id>
             <properties>
-                <jar.executor.vm.options>-Xmx512m -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=38080,suspend=n</jar.executor.vm.options>
+                <jar.executor.vm.options>-Xmx512m -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=38080,suspend=y</jar.executor.vm.options>
             </properties>
         </profile>
     </profiles>
